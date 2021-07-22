@@ -83,6 +83,15 @@ class _KakaoLoginState extends State<KakaoLogin> {
   }
 
   @override
+  Widget image(BuildContext context) {
+    return Scaffold (
+      body: Center(
+        child: ,
+        )
+      );
+  }
+
+  @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
@@ -99,6 +108,7 @@ class _KakaoLoginState extends State<KakaoLogin> {
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
+                //Icons 카카오톡 아이콘 찾아서 넣기
                 children: [Icon(Icons.chat_bubble_rounded, color: Colors.brown[800]),
                   SizedBox(width: 10,),
                   Text(
