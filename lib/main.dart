@@ -86,7 +86,6 @@ class _KakaoLoginState extends State<KakaoLogin> {
   Widget image(BuildContext context) {
     return Scaffold (
       body: Center(
-        child: ,
         )
       );
   }
