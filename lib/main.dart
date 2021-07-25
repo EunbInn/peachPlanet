@@ -82,13 +82,13 @@ class _KakaoLoginState extends State<KakaoLogin> {
     }
   }
 
-  @override
-  Widget image(BuildContext context) {
-    return Scaffold (
-      body: Center(
-        )
-      );
-  }
+  // @override
+  // Widget image(BuildContext context) {
+  //   return Scaffold (
+  //     body: Center(
+  //       )
+  //     );
+  // }
 
   @override
   Widget build(BuildContext context) {
