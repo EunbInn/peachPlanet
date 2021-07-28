@@ -23,7 +23,6 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primaryColor: mainColor,
-        primaryIconTheme: Icon(SvgPicture.asset('images/peach_main.svg')),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: KakaoLogin(),
