@@ -1,9 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:kakao_flutter_sdk/all.dart';
 import 'package:kakao_flutter_sdk/common.dart'; // import utility methods
 import 'package:kakao_flutter_sdk/user.dart';
 import 'constValue.dart';
 
+class Route {
+  static const INITIAL = '/';
+  static const LOGIN = '/login';
+}
 void main() {
   KakaoContext.clientId = "2842cdeca515e53a5d1e7f1fdf72f23a";
   KakaoContext.javascriptClientId = "080ef3c31fd3f162f8e3ddd5ef311260";
@@ -18,6 +23,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         primaryColor: mainColor,
+        primaryIconTheme: Icon(SvgPicture.asset('images/peach_main.svg')),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: KakaoLogin(),
