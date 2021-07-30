@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        primaryColor: mainColor,
+        primaryColor: ConstColor.mainColor,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: KakaoLogin(),
@@ -99,33 +99,71 @@ class _KakaoLoginState extends State<KakaoLogin> {
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
-      backgroundColor: mainColor,
+      backgroundColor: ConstColor.mainColor,
       body: Center(
-        child: InkWell(
-            onTap: () => _isKakaoTalkInstalled ? _loginWithTalk : _loginWithKakao,
-            child:Container(
-              width: MediaQuery.of(context).size.width * 0.7,
-              height: MediaQuery.of(context).size.height * 0.1,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: Colors.yellow
+        child: Column(
+          children: [
+            Padding(padding: EdgeInsets.only(top: 120, bottom: 80),
+              child: Container(
+                child: SvgPicture.asset('images/IMG_Splash.svg'),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                //Icons 카카오톡 아이콘 찾아서 넣기
-                children: [Icon(Icons.chat_bubble_rounded, color: Colors.brown[800]),
-                  SizedBox(width: 10,),
-                  Text(
-                    '카카오 계정으로 시작',
-                    style: TextStyle(
-                        color: Colors.brown[800],
-                        fontWeight: FontWeight.w900,
-                        fontSize: 18
+            ),
+            //kakao talk login----------------------------------------------------
+            InkWell(
+              onTap:() => _isKakaoTalkInstalled ? _loginWithTalk : _loginWithKakao,
+              child:Container(
+                width: MediaQuery.of(context).size.width * 0.7,
+                height: MediaQuery.of(context).size.height * 0.09,
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: ConstColor.kakaoColor,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+
+                    SvgPicture.asset('images/ic_logo_kakao.svg'),
+                    SizedBox(width: 20,),
+                    Text(
+                      '카카오 계정으로 시작',
+                      style: TextStyle(
+                          color: Colors.brown[900],
+                          fontWeight: FontWeight.w900,
+                          fontSize: 18
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            )
+            ),
+            Padding(padding: EdgeInsets.only(bottom: 13)),
+            //apple login---------------------------------------------------------
+            InkWell(
+              onTap:() => _isKakaoTalkInstalled ? _loginWithTalk : _loginWithKakao,
+              child:Container(
+                width: MediaQuery.of(context).size.width * 0.7,
+                height: MediaQuery.of(context).size.height * 0.09,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: Colors.black,
+                ),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [SvgPicture.asset('images/ic_logo_apple.svg'),
+                    SizedBox(width: 32,),
+                    Text(
+                      '애플 계정으로 시작',
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w900,
+                          fontSize: 18
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
