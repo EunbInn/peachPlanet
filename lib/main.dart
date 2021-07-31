@@ -89,7 +89,7 @@ class _KakaoLoginState extends State<KakaoLogin> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    // TODO: implement build..
     return Scaffold(
       backgroundColor: ConstColor.mainColor,
       body: Center(
