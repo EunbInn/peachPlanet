@@ -129,7 +129,7 @@ class _KakaoLoginState extends State<KakaoLogin> {
               ),
             ),
             Padding (padding: EdgeInsets.only(bottom: 13)),
-            //apple login(method build not yet)---------------------------------------------------------
+            //apple login(method build not yet)--------------------------------------------------------
             InkWell(
               onTap:() => _isKakaoTalkInstalled ? _loginWithTalk : _loginWithKakao,
               child:Container(
