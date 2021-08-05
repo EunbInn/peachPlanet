@@ -5,6 +5,7 @@ import 'package:kakao_flutter_sdk/common.dart'; // import utility methods
 import 'package:kakao_flutter_sdk/user.dart';
 import 'constValue.dart';
 
+//not used yet
 class Route {
   static const INITIAL = '/';
   static const LOGIN = '/login';
@@ -49,11 +50,9 @@ class _KakaoLoginState extends State<KakaoLogin> {
     final installed = await isKakaoTalkInstalled();
     print('Kakao Install : ' + installed.toString());
     //카카오톡 인스톨 여부에 따라 web연결 혹은 app 연결
-
     setState(() {
       _isKakaoTalkInstalled = installed;
     });
-
   }
 
   _issueAccessToken(String authCode) async {
@@ -95,7 +94,7 @@ class _KakaoLoginState extends State<KakaoLogin> {
       body: Center(
         child: Column(
           children: [
-            Padding(padding: EdgeInsets.only(top: 120, bottom: 80),
+            Padding(padding: EdgeInsets.only(top: 90, bottom: 80),
               child: Container(
                 child: SvgPicture.asset('images/IMG_Splash.svg'),
               ),
@@ -120,16 +119,16 @@ class _KakaoLoginState extends State<KakaoLogin> {
                       style: TextStyle(
                         fontFamily: 'NanumSquareRound',
                         color: Colors.brown[900],
-                        fontWeight: FontWeight.w700,
-                        fontSize: 18,
+                        fontWeight: FontWeight.w800,
+                        fontSize: 16,
                       ),
                     ),
                   ],
                 ),
               ),
             ),
-            Padding (padding: EdgeInsets.only(bottom: 13)),
-            //apple login(method build not yet)--------------------------------------------------------
+            Padding (padding: EdgeInsets.only(bottom: 10)),
+            //apple login(apple login method build not yet)--------------------------------------------
             InkWell(
               onTap:() => _isKakaoTalkInstalled ? _loginWithTalk : _loginWithKakao,
               child:Container(
@@ -148,7 +147,7 @@ class _KakaoLoginState extends State<KakaoLogin> {
                       style: TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w700,
-                          fontSize: 18,
+                          fontSize: 16,
                           fontFamily: 'NanumSquareRound',
                       ),
                     ),
