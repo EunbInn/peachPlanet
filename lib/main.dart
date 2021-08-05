@@ -50,9 +50,7 @@ class _KakaoLoginState extends State<KakaoLogin> {
     final installed = await isKakaoTalkInstalled();
     print('Kakao Install : ' + installed.toString());
     //카카오톡 인스톨 여부에 따라 web연결 혹은 app 연결
-    setState(() {
-      _isKakaoTalkInstalled = installed;
-    });
+    _isKakaoTalkInstalled = installed;
   }
 
   _issueAccessToken(String authCode) async {
@@ -64,7 +62,7 @@ class _KakaoLoginState extends State<KakaoLogin> {
         isLogin = true;
       });
     } catch (e) {
-      print(e.toString());
+      print('error on login: $e');
     }
   }
 
@@ -73,7 +71,7 @@ class _KakaoLoginState extends State<KakaoLogin> {
       var code = await AuthCodeClient.instance.request();
       await _issueAccessToken(code);
     } catch (e) {
-      print(e.toString());
+      print('error on login: $e');
     }
   }
 
@@ -82,7 +80,7 @@ class _KakaoLoginState extends State<KakaoLogin> {
       var code = await AuthCodeClient.instance.requestWithTalk();
       await _issueAccessToken(code);
     } catch (e) {
-      print(e.toString());
+      print('error on login: $e');
     }
   }
 
