@@ -83,5 +83,16 @@ flutter:
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700
   #
+  fonts:
+    - family: NanumSquareRound
+      fonts:
+        - asset: fonts/NanumSquareRound/NanumSquareRoundL.ttf
+          weight: 300
+        - asset: fonts/NanumSquareRound/NanumSquareRoundR.ttf
+          weight: 400
+        - asset: fonts/NanumSquareRound/NanumSquareRoundB.ttf
+          weight: 700
+        - asset: fonts/NanumSquareRound/NanumSquareRoundEB.ttf
+          weight: 800
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

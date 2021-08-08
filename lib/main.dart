@@ -87,14 +87,6 @@ class _KakaoLoginState extends State<KakaoLogin> {
     }
   }
 
-  // @override
-  // Widget image(BuildContext context) {
-  //   return Scaffold (
-  //     body: Center(
-  //       )
-  //     );
-  // }
-
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -121,23 +113,23 @@ class _KakaoLoginState extends State<KakaoLogin> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-
                     SvgPicture.asset('images/ic_logo_kakao.svg'),
                     SizedBox(width: 20,),
                     Text(
                       '카카오 계정으로 시작',
                       style: TextStyle(
-                          color: Colors.brown[900],
-                          fontWeight: FontWeight.w900,
-                          fontSize: 18
+                        fontFamily: 'NanumSquareRound',
+                        color: Colors.brown[900],
+                        fontWeight: FontWeight.w700,
+                        fontSize: 18,
                       ),
                     ),
                   ],
                 ),
               ),
             ),
-            Padding(padding: EdgeInsets.only(bottom: 13)),
-            //apple login---------------------------------------------------------
+            Padding (padding: EdgeInsets.only(bottom: 13)),
+            //apple login(method build not yet)---------------------------------------------------------
             InkWell(
               onTap:() => _isKakaoTalkInstalled ? _loginWithTalk : _loginWithKakao,
               child:Container(
@@ -155,8 +147,9 @@ class _KakaoLoginState extends State<KakaoLogin> {
                       '애플 계정으로 시작',
                       style: TextStyle(
                           color: Colors.white,
-                          fontWeight: FontWeight.w900,
-                          fontSize: 18
+                          fontWeight: FontWeight.w700,
+                          fontSize: 18,
+                          fontFamily: 'NanumSquareRound',
                       ),
                     ),
                   ],
@@ -166,15 +159,6 @@ class _KakaoLoginState extends State<KakaoLogin> {
           ],
         ),
       ),
-    );
-  }
-
-  @override
-  Widget MainImage(BuildContext context) {
-    return Scaffold(
-      body: Center(
-
-      )
     );
   }
 }
