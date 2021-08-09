@@ -30,7 +30,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
-                <data android:scheme="kakao2842cdeca515e53a5d1e7f1fdf72f23a" android:host="oauth" />
+                <data android:scheme="kakao24e9cbba7a31ab4201c2c104b2fa30e8" android:host="oauth" />
             </intent-filter>
         </activity>
         <!-- Don't delete the meta-data below.

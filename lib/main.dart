@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:kakao_flutter_sdk/all.dart';
 import 'package:kakao_flutter_sdk/common.dart'; // import utility methods
 import 'package:kakao_flutter_sdk/user.dart';
+import 'package:kakao_flutter_sdk/auth.dart';
 import 'constValue.dart';
 
 //not used yet
@@ -11,8 +12,8 @@ class Route {
   static const LOGIN = '/login';
 }
 void main() {
-  KakaoContext.clientId = "2842cdeca515e53a5d1e7f1fdf72f23a";
-  KakaoContext.javascriptClientId = "080ef3c31fd3f162f8e3ddd5ef311260";
+  KakaoContext.clientId = "24e9cbba7a31ab4201c2c104b2fa30e8";
+  KakaoContext.javascriptClientId = "26d550c3979c491acce129e8eea0f625";
   runApp(MyApp());
 }
 
@@ -32,13 +33,19 @@ class MyApp extends StatelessWidget {
 }
 
 class KakaoLogin extends StatefulWidget {
+
   @override
   _KakaoLoginState createState() => _KakaoLoginState();
 }
 
 class _KakaoLoginState extends State<KakaoLogin> {
   bool _isKakaoTalkInstalled = false;
-  bool isLogin = false;
+  // bool isLogin = false;
+
+  @override
+  void dispose() {
+    super.dispose();
+  }
 
   @override
   void initState() {
@@ -50,7 +57,9 @@ class _KakaoLoginState extends State<KakaoLogin> {
     final installed = await isKakaoTalkInstalled();
     print('Kakao Install : ' + installed.toString());
     //카카오톡 인스톨 여부에 따라 web연결 혹은 app 연결
-    _isKakaoTalkInstalled = installed;
+    setState(() {
+      _isKakaoTalkInstalled = installed;
+    });
   }
 
   _issueAccessToken(String authCode) async {
@@ -58,11 +67,11 @@ class _KakaoLoginState extends State<KakaoLogin> {
       var token = await AuthApi.instance.issueAccessToken(authCode);
       AccessTokenStore.instance.toStore(token);
       print('token : ' + token.accessToken);
-      setState(() {
-        isLogin = true;
-      });
+      Navigator.push(context, MaterialPageRoute(
+          builder: (context) => LoginDone()
+      ),);
     } catch (e) {
-      print('error on login: $e');
+      print("error on issuing access token: $e");
     }
   }
 
@@ -84,6 +93,24 @@ class _KakaoLoginState extends State<KakaoLogin> {
     }
   }
 
+  logOutTalk() async {
+    try {
+      var code = await UserApi.instance.logout();
+      print(code.toString());
+    } catch (e) {
+      print('error on logout: $e');
+    }
+  }
+
+  unlinkTalk() async {
+    try {
+      var code = await UserApi.instance.unlink();
+      print(code.toString());
+    } catch (e) {
+      print('error on logout: $e');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build..
@@ -99,7 +126,7 @@ class _KakaoLoginState extends State<KakaoLogin> {
             ),
             //kakao talk login----------------------------------------------------
             InkWell(
-              onTap:() => _isKakaoTalkInstalled ? _loginWithTalk : _loginWithKakao,
+              onTap: _isKakaoTalkInstalled ? _loginWithTalk : _loginWithKakao,
               child:Container(
                 width: MediaQuery.of(context).size.width * 0.7,
                 height: MediaQuery.of(context).size.height * 0.09,
@@ -128,7 +155,7 @@ class _KakaoLoginState extends State<KakaoLogin> {
             Padding (padding: EdgeInsets.only(bottom: 10)),
             //apple login(apple login method build not yet)--------------------------------------------
             InkWell(
-              onTap:() => _isKakaoTalkInstalled ? _loginWithTalk : _loginWithKakao,
+              onTap: _isKakaoTalkInstalled ? _loginWithTalk : _loginWithKakao,
               child:Container(
                 width: MediaQuery.of(context).size.width * 0.7,
                 height: MediaQuery.of(context).size.height * 0.09,
@@ -160,5 +187,25 @@ class _KakaoLoginState extends State<KakaoLogin> {
   }
 }
 
+//logout not yet
+class LoginDone extends StatelessWidget {
+
+  @override
+  Widget build(BuildContext context) {
+
+    return Scaffold(
+      body: Center(
+        child: Container(
+          child: Column(
+            children: [
+              Padding(padding: EdgeInsets.only(top: 150)),
+              SvgPicture.asset('images/IMG_Splash.svg'),
+              Text('Login Success!')
+            ],
+          ),
+        ),
+      ),
+    );
+  }}
 
 
