@@ -23,17 +23,21 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  flutter_email_sender: 5.0.2
+  #dependency get
+  get: ^4.3.4
+  get_storage:
+  http: ^0.13.3
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
-  cupertino_icons: ^1.0.2
+  cupertino_icons: ^1.0.3
   #dependency to use kakao login
   kakao_flutter_sdk: ^0.7.0
   dio: ^4.0.0
   json_annotation: ^4.0.1
-  shared_preferences: ^2.0.5
-  platform: ^3.0.0
+  shared_preferences: ^2.0.7
+  platform: ^3.0.2
   package_info: ^2.0.0
   #to use vector image file
   flutter_svg: ^0.22.0
